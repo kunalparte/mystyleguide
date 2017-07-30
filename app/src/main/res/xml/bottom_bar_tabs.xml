@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <tab
+            id="@+id/productList"
+            title="Wordrobe"
+            icon="@drawable/home_icon"
+            barColorWhenSelected="@color/maroon"/>
+        <tab
+            id="@+id/suggestions"
+            title="Suggestions"
+            icon="@drawable/home_icon"
+            barColorWhenSelected="@color/maroon"/>
+        <tab
+            id="@+id/bookmarks"
+            title="Bookmarks"
+            icon="@drawable/bookmarks_icon"
+            barColorWhenSelected="@color/maroon"/>
+
+
+</tabs>

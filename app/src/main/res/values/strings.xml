@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">MyStyleGuide</string>
+    <string name="facebook_app_id">125318264751387</string>
+    <string name="fb_login_protocol_scheme">fb125318264751387</string>
+
+    <string name="sign_in_with_google">Sign in wih Google</string>
+    <string name="sign_in_with_facebook">Login wih Facebook</string>
+    <string name="title_activity_main2">HomeActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_add_new_product">AddNewProductActivity</string>
+
+    <string name="lifestyleText">Lifestyle</string>
+    <string name="footwearText">Footwear</string>
+
+    <string name="formalText">Formal-Wear</string>
+    <string name="casualText">Casual-Wear</string>
+    <string name="gymSuitText">Gym-Suit</string>
+    <string name="partyWerText">Party-Wear</string>
+
+    <string name="noBookmarks">No Bookmarks available,Add from your suggestions.</string>
+    <string name="noDataText">To fill your wardrobe click on the + button below</string>
+
+    <string name="noUpperWearData">No Shirts or TShirts Added</string>
+    <string name="noBottomrWearData">No Pants Added</string>
+    <string name="noFootWearData">No Footwear Added</string>
+</resources>

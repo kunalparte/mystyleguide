@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.kunalparte.mystyleguide.Activities.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login with one of the following accounts."
+        android:textSize="24sp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="72dp"
+        android:id="@+id/loginMessage"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/googleSignInBtn"
+        android:layout_below="@+id/loginMessage"
+        android:layout_marginTop="56dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:textSize="14sp"
+        android:background="@color/google_btn_color"
+        android:gravity="center_horizontal|center_vertical"
+        android:textColor="@color/white"
+        android:text="@string/sign_in_with_google"
+
+        />
+    <!--<com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        />-->
+
+
+<FrameLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:id="@+id/fbSigninLayout"
+android:layout_marginLeft="8dp"
+android:layout_marginRight="8dp"
+android:layout_marginTop="30dp"
+android:layout_below="@+id/googleSignInBtn"
+android:layout_marginBottom="16dp">
+
+<com.facebook.login.widget.LoginButton
+    android:id="@+id/login_button"
+    android:layout_width="match_parent"
+    android:layout_margin="8dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="30dp"
+    android:visibility="visible"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp"
+    android:layout_marginBottom="30dp" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fbSignInBtn"
+        android:visibility="visible"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:background="@color/colorPrimary"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/sign_in_with_facebook"/>
+
+
+</FrameLayout>
+</RelativeLayout>

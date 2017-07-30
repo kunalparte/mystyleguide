@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.kunalparte.mystyleguide.Activities.AddNewProductActivity"
+    tools:showIn="@layout/activity_add_new_product">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lifestyletext"
+        android:text="@string/lifestyleText"
+        android:background="@color/lightGrey"
+        android:gravity="center_horizontal|center_vertical"
+        android:textSize="@dimen/product_header"
+        android:padding="8dp"/>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:id="@+id/chooseLifestyleCategoryList"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/footwearText"
+        android:background="@color/lightGrey"
+        android:text="@string/footwearText"
+        android:gravity="center_horizontal|center_vertical"
+        android:textSize="@dimen/product_header"
+        android:padding="8dp"/>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:id="@+id/chooseFootwearCategoryList"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

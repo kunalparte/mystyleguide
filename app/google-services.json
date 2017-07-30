@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "700965137394",
+    "firebase_url": "https://fir-mystyleguide.firebaseio.com",
+    "project_id": "firebase-mystyleguide",
+    "storage_bucket": "firebase-mystyleguide.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700965137394:android:4b0e8549c33bb778",
+        "android_client_info": {
+          "package_name": "com.example.kunalparte.mystyleguide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700965137394-tadh1qpt0rcrb0q9v13p4blsd90tdbq9.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "700965137394-5cu9kq87pnkm4td0e78qu1grf5kghvgu.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "700965137394-6puavlhgr1p2m7l3hbr53q7pkuv1ukem.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kunalparte.mystyleguide",
+            "certificate_hash": "b03a550b8c2e150cdbd5bf811260cfd36c8c6c50"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCE3uBpVbH2TQVxsTcdj1EWyk1j9XBQdEs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700965137394-tadh1qpt0rcrb0q9v13p4blsd90tdbq9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/bb_default_elevation"
+    android:id="@+id/allCategoriesListCard"
+    android:layout_margin="8dp"
+    app:cardElevation="@dimen/elevation"
+    app:layout_collapseMode="pin"
+    app:cardBackgroundColor="@color/lightGrey">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cardview_height"
+        android:layout_margin="4dp"
+        android:id="@+id/allCategoriesImages"
+        />
+
+
+
+</android.support.v7.widget.CardView>
