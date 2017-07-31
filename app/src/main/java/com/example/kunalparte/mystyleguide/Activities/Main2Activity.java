@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.design.widget.FloatingActionButton;
@@ -19,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.kunalparte.mystyleguide.Config;
+import com.example.kunalparte.mystyleguide.Dialogs.MyCustomizedDilog;
 import com.example.kunalparte.mystyleguide.Fragments.AddedProductsListFragment;
 import com.example.kunalparte.mystyleguide.Fragments.BookmarkFragment;
 import com.example.kunalparte.mystyleguide.Fragments.ProductSuggestionFragment;
@@ -199,21 +201,21 @@ public class Main2Activity extends AppCompatActivity {
                 if (Singleton.getInstance().getProductListFragmentStack().size() > 1){
                     getPreviousFragment(Singleton.getInstance().getProductListFragmentStack(),Singleton.getInstance().getProductListFragTitleStack());
                 }else {
-//                    exitDialog();
+                    exitDialog();
                 }
                 break;
             case 1:
                 if (Singleton.getInstance().getSuggestionFragmentStack().size() > 1){
                     getPreviousFragment(Singleton.getInstance().getSuggestionFragmentStack(),Singleton.getInstance().getSuggestionFragTitleStack());
                 }else {
-//                    exitDialog();
+                    exitDialog();
                 }
                 break;
             case 2:
                 if (Singleton.getInstance().getBookmarksFragmentStack().size() > 1){
                     getPreviousFragment(Singleton.getInstance().getBookmarksFragmentStack(),Singleton.getInstance().getBookmarksFragTitleStack());
                 }else {
-//                    exitDialog();
+                    exitDialog();
                 }
                 break;
 
@@ -262,4 +264,27 @@ public class Main2Activity extends AppCompatActivity {
 
         Config.getRequestQueue(this,jsonObjectRequest);
     }
+    public void exitDialog(){
+        final MyCustomizedDilog myCustomizedDilog = new MyCustomizedDilog(this);
+        myCustomizedDilog.setDialogMessage("Do You want to exit?");
+        myCustomizedDilog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        myCustomizedDilog.setPositivBtnText("Yes");
+        myCustomizedDilog.setNegativBtnText("No");
+        myCustomizedDilog.setPositivBtnOnClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Singleton.getInstance().dismissAllDialogs();
+                Main2Activity.super.onBackPressed();
+            }
+        });
+        myCustomizedDilog.setNegativBtnOnClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Singleton.getInstance().dismissAllDialogs();
+            }
+        });
+        myCustomizedDilog.show();
+        Singleton.getInstance().initializeVectorForDialog().add(myCustomizedDilog);
+    }
+
 }
