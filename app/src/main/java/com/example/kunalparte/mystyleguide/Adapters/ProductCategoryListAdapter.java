@@ -1,13 +1,18 @@
 package com.example.kunalparte.mystyleguide.Adapters;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +64,8 @@ public class ProductCategoryListAdapter extends RecyclerView.Adapter<ProductCate
                         if (holder.productName.getText().toString().equalsIgnoreCase("casual & t-shirts")){
                             ((AddNewProductActivity) context).showCasualOptionDialog();
                         }else {
-                            ((AddNewProductActivity) context).showOptionDialog(holder.productName.getText().toString());
+                                    ((AddNewProductActivity) context).showOptionDialog(holder.productName.getText().toString());
+
                         }
 
                     }

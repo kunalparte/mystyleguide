@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -46,7 +47,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-public class AddNewProductActivity extends AppCompatActivity {
+import static android.R.attr.permission;
+import static java.security.AccessController.getContext;
+
+public class AddNewProductActivity extends AppCompatActivity{
     RecyclerView addNewProductList;
     RecyclerView addNewFootwearList;
     RecyclerView.LayoutManager layoutManager;
@@ -55,6 +59,7 @@ public class AddNewProductActivity extends AppCompatActivity {
     ArrayList<CategoryTypeData> footwearArraylist;
     MyCustomizedDilog myCustomizedDilog;
     ProgressDialog progressDialog;
+    boolean permisssionGranted = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,15 +108,21 @@ public class AddNewProductActivity extends AppCompatActivity {
             if (Config.isNewtworkAvalable(this)) {
                 switch (requestCode) {
                     case Config.CAMERA:
-                        Bitmap photo = (Bitmap) data.getExtras().get("data");
-                        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                        photo.compress(Bitmap.CompressFormat.JPEG   , 100, bytes);
-                        String path = MediaStore.Images.Media.insertImage(getApplicationContext().getContentResolver(), photo, "Title", null);
-                        createCategoryFirebaseData(Uri.parse(path));
+                        if (resultCode == RESULT_OK) {
+                            if (data.toString() != null && !data.toString().isEmpty()) {
+                                Bitmap photo = (Bitmap) data.getExtras().get("data");
+                                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                                    photo.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+                                    String path = MediaStore.Images.Media.insertImage(getApplicationContext().getContentResolver(), photo, "Title", null);
+                                    createCategoryFirebaseData(Uri.parse(path));
+                            }
+                        }
                         break;
                     case Config.GALLERY:
-                        if (data != null)
-                        createCategoryFirebaseData(data.getData());
+                        if (resultCode == RESULT_OK) {
+                            if (data != null)
+                                createCategoryFirebaseData(data.getData());
+                        }
                         break;
                 }
             }else {
@@ -239,36 +250,30 @@ public class AddNewProductActivity extends AppCompatActivity {
         myCustomizedDilog.setPositivBtnOnClick(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-                        || ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
-                    Log.e("Prescription", "permission not granted, requesting");
+                if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                     String[] multi = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO};
                     if (Build.VERSION.SDK_INT >= 23) {
                         requestPermissions(multi, 6);
-                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        startActivityForResult(intent, Config.CAMERA);
-                        Singleton.getInstance().dismissAllDialogs();
+                        int res = checkCallingOrSelfPermission(Manifest.permission.CAMERA);
+
                     }
+                }else {
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, Config.CAMERA);
+                    Singleton.getInstance().dismissAllDialogs();
                 }
-            }
+                }
 
         });
         myCustomizedDilog.setNegativBtnOnClick(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-                        || ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
-                    Log.e("Prescription", "permission not granted, requesting");
-                    String[] multi = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO};
-                    if (Build.VERSION.SDK_INT >= 25)
-                        requestPermissions(multi, 6);
-                }
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent,
-                        "Select Picture"), Config.GALLERY);
-                Singleton.getInstance().dismissAllDialogs();
+                    Intent intent = new Intent();
+                    intent.setType("image/*");
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(Intent.createChooser(intent,
+                            "Select Picture"), Config.GALLERY);
+                    Singleton.getInstance().dismissAllDialogs();
             }
         });
         myCustomizedDilog.show();
@@ -283,19 +288,33 @@ public class AddNewProductActivity extends AppCompatActivity {
         myCustomizedDilog.setPositivBtnOnClick(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showOptionDialog("Casual-Shirts");
+                               showOptionDialog("Casual-Shirts");
             }
 
         });
         myCustomizedDilog.setNegativBtnOnClick(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showOptionDialog("T-Shirts");
+                        showOptionDialog("T-Shirts");
+
+
             }
         });
         myCustomizedDilog.show();
         Singleton.getInstance().initializeVectorForDialog().add(myCustomizedDilog);
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 6:
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, Config.CAMERA);
+                break;
+        }
+    }
+
     @Override
     public void onBackPressed(){
         if (myCustomizedDilog != null && myCustomizedDilog.isShowing()){

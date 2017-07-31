@@ -168,6 +168,7 @@ public class AddedProductsListFragment extends android.app.Fragment {
     @Override
     public void onResume(){
         super.onResume();
+
 //        getAllcategoriesData();
         allCategoriesArrayList = new ArrayList<>();
         DatabaseReference reference = Singleton.getInstance().getFirebaseReference().getReferenceFromUrl(Config.GET_USERS_URL).child(MySharePreferences.getLoginUserName(getActivity())).child("categories");
