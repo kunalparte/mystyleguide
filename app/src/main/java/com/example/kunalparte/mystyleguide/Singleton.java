@@ -109,22 +109,6 @@ public class Singleton {
         return bookmarksFragmentTitleStack;
     }
 
-    //profileFragment stack instance
-    public Stack<Fragment> getProfileFragmentStack(){
-        if (profileFragmentStack == null){
-            profileFragmentStack = new Stack<>();
-        }
-        return profileFragmentStack;
-    }
-
-    //profileFragment title stack instance
-    public Stack<String> getProfileFragTitleStack(){
-        if (profileFragmentTitleStack == null){
-            profileFragmentTitleStack = new Stack<>();
-        }
-        return profileFragmentTitleStack;
-    }
-
     public Vector initializeVectorForDialog(){
         if (dialog == null){
             dialog = new Vector<>();
@@ -139,6 +123,21 @@ public class Singleton {
                     myCustomDialog.dismiss();
                 }
             }
+        }
+    }
+
+    public void clearFragmentStacks(){
+        if (productListFragmentStack.size() > 0){
+            productListFragmentStack.clear();
+            productListFragmentTitleStack.clear();
+        }
+        if (suggestionFragmentStack.size() > 0){
+            suggestionFragmentStack.clear();
+            suggestionFragmentTitleStack.clear();
+        }
+        if (bookmarksFragmentStack.size() > 0){
+            bookmarksFragmentStack.clear();
+            bookmarksFragmentTitleStack.clear();
         }
     }
 }

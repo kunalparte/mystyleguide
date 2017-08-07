@@ -48,6 +48,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import static android.R.attr.permission;
+import static android.R.attr.subMenuArrow;
+import static android.R.attr.supportsAssist;
 import static java.security.AccessController.getContext;
 
 public class AddNewProductActivity extends AppCompatActivity{
@@ -296,8 +298,6 @@ public class AddNewProductActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                         showOptionDialog("T-Shirts");
-
-
             }
         });
         myCustomizedDilog.show();
@@ -320,7 +320,7 @@ public class AddNewProductActivity extends AppCompatActivity{
         if (myCustomizedDilog != null && myCustomizedDilog.isShowing()){
             Singleton.getInstance().dismissAllDialogs();
         }else {
-//            startActivity(new Intent(AddNewProductActivity.this,Main2Activity.class));
+            super.onBackPressed();
             finish();
         }
     }

@@ -1,6 +1,8 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="product_header">16dp</dimen>
-    <dimen name="cardview_height">240dp</dimen>
-    <dimen name="elevation">6dp</dimen>
+    <dimen name="cardview_height">260dp</dimen>
+    <dimen name="cardview_width">180dp</dimen>
+    <dimen name="elevation">8dp</dimen>
+    <dimen name="margin">8dp</dimen>
 </resources>

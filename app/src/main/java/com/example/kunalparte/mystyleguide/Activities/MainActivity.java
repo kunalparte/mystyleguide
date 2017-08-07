@@ -1,7 +1,6 @@
 package com.example.kunalparte.mystyleguide.Activities;
 
 import android.content.Intent;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,12 +25,9 @@ import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
@@ -39,7 +35,6 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
     GoogleSignInOptions googleSignInOptions;
     GoogleApiClient googleApiClient;
-//    SignInButton googleSignInButton;
     View.OnClickListener onClickListener;
     LoginButton fbLoGinButton;
     CallbackManager callbackManager;
@@ -81,9 +76,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
-/*                    case R.id.sign_in_button:
-                        signIn();
-                        break;*/
                     case R.id.fbSignInBtn:
                         if (Config.isNewtworkAvalable(getApplicationContext()))
                         fbLoGinButton.performClick();
@@ -104,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
-//        googleSignInButton.setOnClickListener(onClickListener);
         fbLoGinButton.setOnClickListener(onClickListener);
         googleSignInbutton.setOnClickListener(onClickListener);
         fbSignInbutton.setOnClickListener(onClickListener);

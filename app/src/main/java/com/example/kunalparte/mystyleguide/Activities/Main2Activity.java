@@ -218,7 +218,6 @@ public class Main2Activity extends AppCompatActivity {
                     exitDialog();
                 }
                 break;
-
         }
     }
     public void getCategoryList(){
@@ -274,7 +273,8 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Singleton.getInstance().dismissAllDialogs();
-                Main2Activity.super.onBackPressed();
+                Singleton.getInstance().clearFragmentStacks();
+                finish();
             }
         });
         myCustomizedDilog.setNegativBtnOnClick(new View.OnClickListener() {

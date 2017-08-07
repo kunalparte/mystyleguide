@@ -25,4 +25,8 @@
     <string name="noUpperWearData">No Shirts or TShirts Added</string>
     <string name="noBottomrWearData">No Pants Added</string>
     <string name="noFootWearData">No Footwear Added</string>
+
+    <string name="upperWear">Shirts,TShirts N Jackets</string>
+    <string name="bottomWear">Trousers,Jeans N Shorts</string>
+    <string name="footWear">Footwear</string>
 </resources>

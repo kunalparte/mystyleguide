@@ -67,7 +67,6 @@ public class ProductCategoryListAdapter extends RecyclerView.Adapter<ProductCate
                                     ((AddNewProductActivity) context).showOptionDialog(holder.productName.getText().toString());
 
                         }
-
                     }
                 });
                 break;
@@ -85,7 +84,6 @@ public class ProductCategoryListAdapter extends RecyclerView.Adapter<ProductCate
                     @Override
                     public void onClick(View v) {
                         callShowSuggestionDataActivity(context,Config.CASUALS);
-
                     }
                 });
                 break;
@@ -94,7 +92,6 @@ public class ProductCategoryListAdapter extends RecyclerView.Adapter<ProductCate
                     @Override
                     public void onClick(View v) {
                         callShowSuggestionDataActivity(context,Config.GYM_SUiI);
-
                     }
                 });
                 break;

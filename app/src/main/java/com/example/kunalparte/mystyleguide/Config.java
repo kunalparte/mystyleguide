@@ -14,6 +14,7 @@ import com.example.kunalparte.mystyleguide.Models.UserLoginDetais;
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Random;
 
@@ -91,5 +92,12 @@ public class Config {
         }
         String output = "img"+sb.toString();
         return output;
+    }
+    public static HashMap getHashMap(String id,String imageUrl,boolean isBookmarked){
+        HashMap hashMap = new HashMap();
+        hashMap.put("id",id);
+        hashMap.put("url",imageUrl);
+        hashMap.put("isBookmarked",isBookmarked);
+        return hashMap;
     }
 }

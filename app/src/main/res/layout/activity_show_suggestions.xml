@@ -20,7 +20,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_show_suggestions" />
+    <include layout="@layout/content_suggestion" />
 
 
 </android.support.design.widget.CoordinatorLayout>

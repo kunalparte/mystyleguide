@@ -96,6 +96,7 @@ public class BookmarkFragment extends android.app.Fragment {
     public void getBookmarksdata(){
         DatabaseReference databaseReference = Singleton.getInstance().getFirebaseReference().getReferenceFromUrl(Config.GET_USERS_URL+"/"+MySharePreferences.getLoginUserName(getActivity()));
         databaseReference.child("bookMarks");
+        bookMarkArrayList = new ArrayList<>();
         String url = Config.GET_USERS_URL+"/"+ MySharePreferences.getLoginUserName(getActivity())+"/bookMarks.json";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
