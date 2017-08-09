@@ -53,4 +53,5 @@ public class ShowSuggestionAdapter extends BaseAdapter{
         Picasso.with(context).load(Uri.parse(suggestionArrayList.get(position).getImageUri())).fit().into(imageView);
         return convertView;
     }
+
 }
